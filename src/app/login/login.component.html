@@ -1,0 +1,84 @@
+<!-- <div class="jumbotron">
+    <div class="row container justify-content-right">
+      <div id="login-text" class="align-self-center col-12 col-md-5 col-lg-6 offset-md-1 offset-lg-1 mb-2">
+        <h2 class="text-small text-center text-md-right">Login to post and access your profile.</h2>
+      </div>
+      <div id="login-form" class="text-center col-11 col-sm-9 col-md-5 col-lg-4">
+        <form [formGroup]="emailform">
+          <h2 class="mb-3">Login</h2>
+          <small class="mt-0 mb-1 text-danger" *ngIf="error">{{error}}</small>
+          <input class="form-control form-control-md" formControlName="email" type="text" placeholder="Email">
+          <small class="mt-0 mb-1 text-danger" *ngIf="email.touched && email.errors">
+            <div *ngIf="email.errors.email && !email.errors.required">Please enter a valid Email.</div>
+            <div *ngIf="email.errors.required">An Email is required.</div>
+          </small>
+  
+          <input formControlName="password" class="form-control form-control-md" type="password" placeholder="Password">
+          <small class="mt-0 mb-1 text-danger" *ngIf="password.touched && password.errors">
+              <div *ngIf="password.errors.minlength">Password should be minimum 6 characters.</div>
+            <div *ngIf="password.errors.required">A Password is required is required.</div>
+          </small>
+        </form>
+        <button id="login-btn" class="btn btn-dark py-2" (click)="login('email')">Login</button>
+        <h6 class="align-self-center my-1">or</h6>
+        <button id="google-btn" class="btn btn-dark py-2" (click)="login('google')">Google</button>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="p-5">
+      <h5>Please verify your email before logging in.</h5>
+    </div>
+  </ng-template> -->
+
+  <div class="row background">
+    <div class="offset-sm-4 col-sm-4">
+  
+      <div class="card text-blank">
+        <div class="card-body">
+          <div class="card-title text-center"><h5>Login using your email</h5></div>
+  
+          <div class="card-text">
+  
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Enter email" name="email" [formControl]="myForm.controls['email']">
+              </div>
+              
+              <div class="alert alert-danger" *ngIf="!myForm.controls['email'].valid && myForm.controls['email'].touched">
+                A valid Email is required.
+              </div>
+  
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Enter password" name="password" [formControl]="myForm.controls['password']">
+              </div>
+              
+              <div class="alert alert-danger" *ngIf="!myForm.controls['password'].valid && myForm.controls['password'].touched">
+                Password is required.
+              </div>
+              
+              <div class="text-center">
+                <button type="submit" class="btn btn-block btn-warning round" [disabled]="!myForm.valid">Submit</button>
+              </div>
+  
+            </form>
+  
+            <div class="text-center mt-3">
+              <button class="btn btn-link" routerLink="/home">Don't have an account? Create One</button>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="alert alert-success" *ngIf="message.length > 0">
+        You have been logged in successfully.
+      </div>
+      <div class="alert alert-danger" *ngIf="userError">
+        {{ userError.message }}
+      </div>
+  
+    </div>
+  </div>
