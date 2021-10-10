@@ -10,7 +10,8 @@ export class HomeComponent implements OnInit {
   name: string = 'internSala';
 
   amount: number = 1999.123;
-
+   
+  nameOf : string = 'logos' ;
   dateBirth = new Date();
   constructor() { }
 
